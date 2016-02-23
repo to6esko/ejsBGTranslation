@@ -20,145 +20,39 @@
 
 <h1><div class="chap_num">Глава 10</div>Модули</h1>
 <blockquote>
-<p><a class="p_ident" id="p_PJiK2g1JXC" href="./10_modules.html#p_PJiK2g1JXC"></a>A beginning programmer writes her programs like an ant builds her
-hill, one piece at a time, without thought for the bigger structure.
-Her programs will be like loose sand. They may stand for a while, but
-growing too big they fall apart.</p>
-<p><a class="p_ident" id="p_OfZWeuo+oF" href="./10_modules.html#p_OfZWeuo+oF"></a>Realizing this problem, the programmer will start to spend a lot of
-time thinking about structure. Her programs will be rigidly
-structured, like rock sculptures. They are solid, but when they must
-change, violence must be done to them.</p>
-<p><a class="p_ident" id="p_fFMEGH1dk3" href="./10_modules.html#p_fFMEGH1dk3"></a>The master programmer knows when to apply structure and when to leave
-things in their simple form. Her programs are like clay, solid yet
-malleable.</p>
- <footer>Master Yuan-Ma, <cite>The Book of Programming</cite></footer>
+<p><a class="p_ident" id="p_PJiK2g1JXC" href="./10_modules.html#p_PJiK2g1JXC"></a>Начинаещ програмист пише своите програми, както една мравка изгражда хълм, едно цяло парче наведнъж, без да мисли за по-голяма структура. Неговите програми ще бъдат, като хлабав пясък. Те могат да издържат известно време, но растат прекалено големи и ще се разпаднат.</p>
+<p><a class="p_ident" id="p_OfZWeuo+oF" href="./10_modules.html#p_OfZWeuo+oF"></a>Осъзнавайки този проблем, програмиста ще започне да прекарва много време мислейки за структурата. Неговите програми ще бъдат неподвижно структурирани, като скални скулптори. Те са солидни, но когато трябва да се променят, ще трябва да се приложи усилие.</p>
+<p><a class="p_ident" id="p_fFMEGH1dk3" href="./10_modules.html#p_fFMEGH1dk3"></a>Майсторът програмист, знае кога да прилага структура и кога да остави нещата в тяхната проста форма. Неговите програми, са като глина, стегнати и същевременно ковки.”</p>
+ <footer>Master Yuan-Ma, <cite>Книга за програмиране</cite></footer>
 </blockquote>
-<p><a class="p_ident" id="p_1aMUBkVbPd" href="./10_modules.html#p_1aMUBkVbPd"></a>Every program has a shape. On
-a small scale, this shape is determined by its division into
-functions and the blocks inside those functions. Programmers have
-a lot of freedom in the way they structure their programs. Shape follows
-more from the taste of the programmer than from the program’s
-intended functionality.</p>
-<p><a class="p_ident" id="p_NOETmtvWWx" href="./10_modules.html#p_NOETmtvWWx"></a>When looking at a larger program in its entirety,
-individual functions start to blend into the background. Such a
-program can be made more readable if we have a larger unit of
-organization.</p>
-<p><a class="p_ident" id="p_07zdYJYQ1M" href="./10_modules.html#p_07zdYJYQ1M"></a><em>Modules</em> divide programs into clusters of code that, by <em>some</em>
-criterion, belong together. This chapter explores some of the benefits
-that such division provides and shows techniques for building
-modules in JavaScript.</p>
-<h2><a class="h_ident" id="h_0DSW4+9YVh" href="./10_modules.html#h_0DSW4+9YVh"></a>Why modules help</h2>
-<p><a class="p_ident" id="p_ovuaejexnJ" href="./10_modules.html#p_ovuaejexnJ"></a>There are a number of reasons why
-authors divide their books into chapters and sections. These
-divisions make it easier for a reader to see how the book is built up
-and to find specific parts that they are interested in. They also help
-the <em>author</em> by providing a clear focus for every section.</p>
-<p><a class="p_ident" id="p_QxCtWUR2zJ" href="./10_modules.html#p_QxCtWUR2zJ"></a>The benefits of organizing a program into several files or
-modules are similar. Structure helps people who aren’t yet
-familiar with the code find what they are looking for and makes it
-easier for the programmer to keep things that are related
-close together.</p>
-<p><a class="p_ident" id="p_4vnN7lCDZy" href="./10_modules.html#p_4vnN7lCDZy"></a>Some
-programs are even organized along the model of a traditional text,
-with a well-defined order in which the reader is encouraged to go
-through the program and with lots of prose (comments) providing a coherent
-description of the code. This makes reading the program a lot less
-intimidating—reading unknown code is usually intimidating—but has the
-downside of being more work to set up. It also makes the program more
-difficult to change because prose tends to be more tightly
-interconnected than code. This style is called <em>literate programming</em>. The “project” chapters of this book can be considered
-literate programs.</p>
-<p><a class="p_ident" id="p_Ou/d4KbIy/" href="./10_modules.html#p_Ou/d4KbIy/"></a>As a
-general rule, structuring things costs energy. In the early stages of
-a project, when you are not quite sure yet what goes where or what
-kind of modules the program needs at all, I endorse a minimalist,
-structureless attitude. Just put everything wherever it is convenient
-to put it until the code stabilizes. That way, you won’t be wasting
-time moving pieces of the program back and forth, and you won’t
-accidentally lock yourself into a structure that does not actually fit
-your program.</p>
+<p><a class="p_ident" id="p_1aMUBkVbPd" href="./10_modules.html#p_1aMUBkVbPd"></a>Всяка програма има форма. На малък мащаб, тази форма се определя чрез разделяне на функции и блокове в тези функции. Програмистите имат много свобода в начина, по който да структурират своите програми. Формата следва повече вкуса на програмиста, от колкото предназначената функционалност на програмата.</p>
+<p><a class="p_ident" id="p_NOETmtvWWx" href="./10_modules.html#p_NOETmtvWWx"></a>Когато търсите в по-голяма програма, която е цяла, отделни функции започват да се смесват с фона. Такива програми може да се направят по-разбираеми, ако имате по-добър начин на организация.</p>
+<p><a class="p_ident" id="p_07zdYJYQ1M" href="./10_modules.html#p_07zdYJYQ1M"></a>Модулите разделят програми в групи от код, които по някои критерии са свързани заедно. Тази глава разглежда някои от ползите, които това разделяне осигурява и показва техники за изграждане на модули в JavaScript.</p>
+<h2><a class="h_ident" id="h_0DSW4+9YVh" href="./10_modules.html#h_0DSW4+9YVh"></a>Защо  модулите  помагат</h2>
+<p><a class="p_ident" id="p_ovuaejexnJ" href="./10_modules.html#p_ovuaejexnJ"></a>Има редица причини, поради които, автори разделят своите книги в глави и раздели. Тези разделения правят по-лесно за едни читател да види как е изградена книгата и да намира конкретни части от нея, които го интересуват. Те също помагат на автора, като му предоставят ясен фокус за всеки раздел.</p>
+<p><a class="p_ident" id="p_QxCtWUR2zJ" href="./10_modules.html#p_QxCtWUR2zJ"></a>Ползите от организиране на програмата в няколко файла или модули са сходни. Структурата помага на хората, които все още не са запознати с кода, да намират това, което търсят и прави по-лесно за програмист да пази неща, които са тясно свързани заедно.</p>
+<p><a class="p_ident" id="p_4vnN7lCDZy" href="./10_modules.html#p_4vnN7lCDZy"></a>Някои програми дори са организирани по модел на традиционен текст с ясно определена цел, с която читателя се насърчава да мине през програмата и с много проза (коментари) въвежда последоватено в описанието на кода. Това прави четенето на програмата много по-малко смущаващо, от колкото четене на неизвестен код, но има недостатък, който е повече работа за да се създаде. Този стил се нарича грамотно програмиране. Проектите в тази книга могат да се считат за грамотни програми.</p>
+<p><a class="p_ident" id="p_Ou/d4KbIy/" href="./10_modules.html#p_Ou/d4KbIy/"></a>Като общо правило, структурирането на нещата има енергийни разходи. В ранните етапи на един проект, когато не сте съвсем сигурни какво се случва, когато или от какви модули се нуждае програмата, аз подкрепям минималистичния безструктурен подход. Просто сложете всичко там, където ви е удобно да го пускате, докато стабилизирате кода. По този начин, вие няма да губите време за преместване на части от програмата назад - напред, и вие няма да се заключите случайно в конструкция, която всъщност не е част от вашата програма.</p>
 <h3><a class="h_ident" id="h_NitCO6r9Hn" href="./10_modules.html#h_NitCO6r9Hn"></a>Namespacing</h3>
-<p><a class="p_ident" id="p_8S/+Hon3uA" href="./10_modules.html#p_8S/+Hon3uA"></a>Most modern programming languages have a
-scope level between <em>global</em> (everyone can see it) and <em>local</em>
-(only this function can see it). JavaScript does not. Thus, by
-default, everything that needs to be visible outside of the scope of a
-top-level function is visible <em>everywhere</em>.</p>
-<p><a class="p_ident" id="p_QMB7RIsBay" href="./10_modules.html#p_QMB7RIsBay"></a>Namespace pollution, the problem of a lot of
-unrelated code having to share a single set of global variable names,
-was mentioned in <a href="./04_data.html#namespace_pollution">Chapter 4</a>,
-where the <code>Math</code> object was given as an example of an object that acts
-like a module by grouping math-related functionality.</p>
-<p><a class="p_ident" id="p_bBKNVkrywA" href="./10_modules.html#p_bBKNVkrywA"></a>Though JavaScript provides no actual
-module construct yet, objects can be used to create publicly
-accessible subnamespaces, and functions can be used to create an
-isolated, private namespace inside of a module. Later in this chapter,
-I will discuss a way to build reasonably convenient, namespace-isolating
-modules on top of the primitive concepts that JavaScript gives us.</p>
-<h3><a class="h_ident" id="h_UuxJID5Z2e" href="./10_modules.html#h_UuxJID5Z2e"></a>Reuse</h3>
-<p><a class="p_ident" id="p_0MwF7DbAP0" href="./10_modules.html#p_0MwF7DbAP0"></a>In a “flat” project, which isn’t
-structured as a set of modules, it is not apparent which parts of
-the code are needed to use a particular function. In my program for
-spying on my enemies (see <a href="./09_regexp.html#ini">Chapter 9</a>), I wrote
-a function for reading configuration files. If I want to use that
-function in another project, I must go and copy out the parts of the
-old program that look like they are relevant to the functionality that
-I need and paste them into my new program. Then, if I find a mistake
-in that code, I’ll fix it only in whichever program that I’m working
-with at the time and forget to also fix it in the other program.</p>
-<p><a class="p_ident" id="p_n5Itkf6SsY" href="./10_modules.html#p_n5Itkf6SsY"></a>Once you have lots of such shared, duplicated pieces
-of code, you will find yourself wasting a lot of time and energy on
-moving them around and keeping them up-to-date.</p>
-<p><a class="p_ident" id="p_zwgHmRoxk9" href="./10_modules.html#p_zwgHmRoxk9"></a>Putting pieces of functionality that stand on their own
-into separate files and modules makes them easier to track, update,
-and share because all the various pieces of code that want to use the
-module load it from the same actual file.</p>
-<p><a class="p_ident" id="p_D2yYhnbA9K" href="./10_modules.html#p_D2yYhnbA9K"></a>This
-idea gets even more powerful when the relations between modules—which
-other modules each module depends on—are explicitly stated. You can
-then automate the process of installing and upgrading external modules
-(<em>libraries</em>).</p>
-<p><a class="p_ident" id="p_3ED8vjm59N" href="./10_modules.html#p_3ED8vjm59N"></a>Taking this idea even
-further, imagine an online service that tracks and distributes
-hundreds of thousands of such libraries, allowing you to search for
-the functionality you need and, once you find it, set up your project
-to automatically download it.</p>
-<p id="modules_npm"><a class="p_ident" id="p_8hHGZUvmtE" href="./10_modules.html#p_8hHGZUvmtE"></a>This service exists. It is called NPM
-(<a href="http://npmjs.org/"><em>npmjs.org</em></a>). NPM consists of an online database of
-modules and a tool for downloading and upgrading the modules your
-program depends on. It grew out of Node.js, the browserless
-JavaScript environment we will discuss in
-<a href="./20_node.html#node">Chapter 20</a>, but can also be useful when
-programming for the browser.</p>
-<h3><a class="h_ident" id="h_qJacYNwWWL" href="./10_modules.html#h_qJacYNwWWL"></a>Decoupling</h3>
-<p><a class="p_ident" id="p_BIr3LxVodJ" href="./10_modules.html#p_BIr3LxVodJ"></a>Another important role of modules is isolating pieces
-of code from each other, in the same way that the object interfaces
-from <a href="./06_object.html#interface">Chapter 6</a> do. A well-designed
-module will provide an interface for external code to use. As the
-module gets updated with bug fixes and new functionality, the
-existing interface stays the same (it is <em>stable</em>) so that other
-modules can use the new, improved version without any changes to
-themselves.</p>
-<p><a class="p_ident" id="p_B3JCtLjLbo" href="./10_modules.html#p_B3JCtLjLbo"></a>Note that a stable interface does not mean no new
-functions, methods, or variables are added. It just means that
-existing functionality isn’t removed and its meaning is not changed.</p>
-<p><a class="p_ident" id="p_vcubl5qb7a" href="./10_modules.html#p_vcubl5qb7a"></a>A good module
-interface should allow the module to grow without breaking the old
-interface. This means exposing as few of the module’s internal
-concepts as possible while also making the “language” that the
-interface exposes powerful and flexible enough to be applicable in a
-wide range of situations.</p>
-<p><a class="p_ident" id="p_jT10dBy1PO" href="./10_modules.html#p_jT10dBy1PO"></a>For interfaces that expose a single, focused
-concept, such as a configuration file reader, this design comes
-naturally. For others, such as a text editor, which has many different
-aspects that external code might need to access (content, styling,
-user actions, and so on), it requires careful design.</p>
-<h2><a class="h_ident" id="h_FIe+oM6Cvt" href="./10_modules.html#h_FIe+oM6Cvt"></a>Using functions as namespaces</h2>
-<p><a class="p_ident" id="p_Qi0v4Dtc05" href="./10_modules.html#p_Qi0v4Dtc05"></a>Functions are the only things in
-JavaScript that create a new scope. So if we want our modules
-to have their own scope, we will have to base them on functions.</p>
-<p><a class="p_ident" id="p_TJhIvzABX+" href="./10_modules.html#p_TJhIvzABX+"></a>Consider this
-trivial module for associating names with day-of-the-week numbers, as
-returned by a <code>Date</code> object’s <code>getDay</code> method:</p>
+<p><a class="p_ident" id="p_8S/+Hon3uA" href="./10_modules.html#p_8S/+Hon3uA"></a>Повечето съвременни езици за програмиране имат ниво на обхват между глобалното (видимо от всеки) и локално (видимо от функцията в която е), JavaScript няма такъв обхват. По този начин, по подразбиране, всичко което трябва да се вижда извън обхвата на функцията се вижда на всякъде до най-високото ниво.</p>
+<p><a class="p_ident" id="p_QMB7RIsBay" href="./10_modules.html#p_QMB7RIsBay"></a>Именно проблемът със замърсяването на пространството с много несвързан код, налага да се споделя единен набор от глобални имена на променливи, за което се споменава в <a href="./04_data.html#namespace_pollution">Глава 4</a>, където обекта <code>Math</code> беше даден, като пример за обект, който действа, като модул чрез групиране на математика свързана с функционалноста.</p>
+<p><a class="p_ident" id="p_bBKNVkrywA" href="./10_modules.html#p_bBKNVkrywA"></a>Въпреки, че JavaScript не дава действителна конструкция на модула все още, обектите могат да бъдат използвани за създаване на публично достъпни <em>subnamespaces</em> и функции, които могат да бъдат използвани за създаване на изолирано, лично пространство във вътрешността на модула. По късно в тази глава, аз ще обсъдя начин за изграждане на разумно и удобно пространство за изолиране на модули, с върха на най-примитивните концепции, които JavaScript ни дава.</p>
+<h3><a class="h_ident" id="h_UuxJID5Z2e" href="./10_modules.html#h_UuxJID5Z2e"></a>Повторна  употреба</h3>
+<p><a class="p_ident" id="p_0MwF7DbAP0" href="./10_modules.html#p_0MwF7DbAP0"></a>Във всеки “плосък” проект, който не е структуриран, като набор от модули, не е видно за кои части от кода трябва да се използва определена функция. В моята програма за шпиониране на враговете (виж <a href="./09_regexp.html#ini">Глава 9</a>), аз написах функция за четене на конфигурационни файлове. Ако искам да използвам тази функция в друг проект, аз трябва да отида и да препиша частите от старата програма, от които имам нужда свързани с функционалноста и да ги поставя в новата си програма. След това, ако намеря грешка в кода, аз ще го оправя само в зависимост от това в коя програма работя в момента и най-вероятно ще забравя да го оправя в другата програма.</p>
+<p><a class="p_ident" id="p_n5Itkf6SsY" href="./10_modules.html#p_n5Itkf6SsY"></a>След като, имате много такива споделени, дублирани парчета код, постепенно с времето, вие ще откриете, че губите много време и енергия за да ги местите и съхранявате.</p>
+<p><a class="p_ident" id="p_zwgHmRoxk9" href="./10_modules.html#p_zwgHmRoxk9"></a>Поставянето на самостоятелни парчета функционалност в отделни файлове и модули, ги прави по-лесно проследими за обновяване и споделяне, защото всички различни части от кода, който искате да използвате, като модул, са продължение на същия действителен файл.</p>
+<p><a class="p_ident" id="p_D2yYhnbA9K" href="./10_modules.html#p_D2yYhnbA9K"></a>Тази идея получава още мощност, когато връзките между модулите - това кой модул от кой зависи - са изрично декларирани. След това може да се автоматизира процеса на инсталиране и обновяване на външни модули (библиотеки).</p>
+<p><a class="p_ident" id="p_3ED8vjm59N" href="./10_modules.html#p_3ED8vjm59N"></a>Възползвайки се от тази идея, си представете онлайн услуга, която следи и разпределя стотици хиляди библиотеки, която ви позволява да търсите функционалноста, от която имате нужда и след като я намерите, вашия проект автоматично да я изтегли.</p>
+<p id="modules_npm"><a class="p_ident" id="p_8hHGZUvmtE" href="./10_modules.html#p_8hHGZUvmtE"></a>Съществува такава услуга, тя се нарича NPM (<a href="http://npmjs.org/"><em>npmjs.org</em></a>). NPM се състои от онлайн база данни на модули  и е инструмент за изтегляне и обновяване на модулите в програмите. Тя се роди в резултат на Node.js среда на JavaScript , която ще обсъдим в 
+<a href="./20_node.html#node">Глава 20</a>, но може да бъде полезна при програмирането на браузъра.</p>
+<h3><a class="h_ident" id="h_qJacYNwWWL" href="./10_modules.html#h_qJacYNwWWL"></a>Отделяне</h3>
+<p><a class="p_ident" id="p_BIr3LxVodJ" href="./10_modules.html#p_BIr3LxVodJ"></a>Друга важна роля на модулите е изолирането на части от код от друг, по същия начин, който интерфейсите на обектите правят в <a href="./06_object.html#interface">Глава 6</a>. Един добре проектиран модул ще предостави интерфейс за външен код, за да може да го използвате. Тъй като, модулът получава актуализация с корекции на грешки и нова функционалност - съществуващият интерфейс остава също (ако е стабилен) - така че и другите модули да могат да използват новата подобрена версия без никакви промени в себе си.</p>
+<p><a class="p_ident" id="p_B3JCtLjLbo" href="./10_modules.html#p_B3JCtLjLbo"></a>Имайте в предвид, че един стабилен интерфейс не означава, че няма нови функции, методи или променливи, които да се добавят към него. Това просто означава, че съществуващата функционалност не е отстранена и нейното значение не се променя.</p>
+<p><a class="p_ident" id="p_vcubl5qb7a" href="./10_modules.html#p_vcubl5qb7a"></a>Един добър интерфейс на модул трябва да даде възможност на модула да расте без да се счупи стария интерфейс. Това означава, че разкривайки някои от вътрешните концепции на модула (като възможност на езика) прави този интерфейс мощен и достатъчно гъвкав, за да се прилага в широк спектър от ситуации.</p>
+<p><a class="p_ident" id="p_jT10dBy1PO" href="./10_modules.html#p_jT10dBy1PO"></a>За интерфейси, които излагат  единни, фиксирани концепции, като четец на конфигурационен файл, този дизайн идва естествено. За други, като текстов редактор, който има много различни аспекти, които се нуждаят от външен код за достъп(съдържание, стайлинг, действия на потребител и т.н.) се изисква внимателно планиране.</p>
+<h2><a class="h_ident" id="h_FIe+oM6Cvt" href="./10_modules.html#h_FIe+oM6Cvt"></a>Използване  на  функциии, като namespaces</h2>
+<p><a class="p_ident" id="p_Qi0v4Dtc05" href="./10_modules.html#p_Qi0v4Dtc05"></a>Функциите са единствените неща в JavaScript, които създават нов обхват. Така че, ако искаме нашите модули да имат свой собствен характер, ще трябва да ги основем на функции.</p>
+<p><a class="p_ident" id="p_TJhIvzABX+" href="./10_modules.html#p_TJhIvzABX+"></a>Помислете за този тривиален модул, който асоциира имената на дните от седмицата с номера, като резултат от <code>Date</code> обекта на  <code>getDay</code> метода:</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_0/+3DgqC3k" href="./10_modules.html#c_0/+3DgqC3k"></a><span class="cm-keyword">var</span> <span class="cm-variable">names</span> <span class="cm-operator">=</span> [<span class="cm-string">"Sunday"</span>, <span class="cm-string">"Monday"</span>, <span class="cm-string">"Tuesday"</span>, <span class="cm-string">"Wednesday"</span>,
              <span class="cm-string">"Thursday"</span>, <span class="cm-string">"Friday"</span>, <span class="cm-string">"Saturday"</span>];
 <span class="cm-keyword">function</span> <span class="cm-variable">dayName</span>(<span class="cm-def">number</span>) {
@@ -167,10 +61,8 @@ returned by a <code>Date</code> object’s <code>getDay</code> method:</p>
 
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">dayName</span>(<span class="cm-number">1</span>));
 <span class="cm-comment">// → Monday</span></pre>
-<p><a class="p_ident" id="p_lljN2eMCck" href="./10_modules.html#p_lljN2eMCck"></a>The <code>dayName</code> function is part
-of the module’s interface, but the <code>names</code> variable is not. We
-would prefer <em>not</em> to spill it into the global scope.</p>
-<p><a class="p_ident" id="p_NKmpNxgsFg" href="./10_modules.html#p_NKmpNxgsFg"></a>We can do this:</p>
+<p><a class="p_ident" id="p_lljN2eMCck" href="./10_modules.html#p_lljN2eMCck"></a>Функцията <code>dayName</code> е част от интерфейса на модула, но променливата <code>names</code> не е. Бихме предпочели да не я изсипваме в глобалния обхват.</p>
+<p><a class="p_ident" id="p_NKmpNxgsFg" href="./10_modules.html#p_NKmpNxgsFg"></a>Можем да направим това:</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_cQrjXVzz5t" href="./10_modules.html#c_cQrjXVzz5t"></a><span class="cm-keyword">var</span> <span class="cm-variable">dayName</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>() {
   <span class="cm-keyword">var</span> <span class="cm-def">names</span> <span class="cm-operator">=</span> [<span class="cm-string">"Sunday"</span>, <span class="cm-string">"Monday"</span>, <span class="cm-string">"Tuesday"</span>, <span class="cm-string">"Wednesday"</span>,
                <span class="cm-string">"Thursday"</span>, <span class="cm-string">"Friday"</span>, <span class="cm-string">"Saturday"</span>];
@@ -181,16 +73,8 @@ would prefer <em>not</em> to spill it into the global scope.</p>
 
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">dayName</span>(<span class="cm-number">3</span>));
 <span class="cm-comment">// → Wednesday</span></pre>
-<p><a class="p_ident" id="p_wFyqiGP0o5" href="./10_modules.html#p_wFyqiGP0o5"></a>Now <code>names</code> is a local variable in an
-(unnamed) function. This function is created and immediately called,
-and its return value (the actual <code>dayName</code> function) is stored in a
-variable. We could have pages and pages of code in this function, with
-100 local variables, and they would all be internal to our
-module—visible to the module itself but not to outside code.</p>
-<p><a class="p_ident" id="p_XMMYXbTqGr" href="./10_modules.html#p_XMMYXbTqGr"></a>We can use a similar pattern to
-isolate code from the outside world entirely. The following module logs a
-value to the console but does not actually provide any values for
-other modules to use:</p>
+<p><a class="p_ident" id="p_wFyqiGP0o5" href="./10_modules.html#p_wFyqiGP0o5"></a>Сега <code>names</code> е локална променлива в анонимна функция. Тази функция се създава и веднага се извиква, и нейната върната стойност (действителната <code>dayName</code> функция) е съхранена в променлива. Ние можем да имаме страници и страници код в тази функция, със сто локални променливи и всички ще бъдат в нашия вътрешен модул, видими за самия модул, но невидими от вън.</p>
+<p><a class="p_ident" id="p_XMMYXbTqGr" href="./10_modules.html#p_XMMYXbTqGr"></a>Можем да използваме подобен модел да изолираме код изцяло от външния свят. Следващия модул логва стойност към конзолата, но всъщност не предоставя никакви стойности за ползване към други модули.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_HzELhaatCS" href="./10_modules.html#c_HzELhaatCS"></a>(<span class="cm-keyword">function</span>() {
   <span class="cm-keyword">function</span> <span class="cm-def">square</span>(<span class="cm-def">x</span>) { <span class="cm-keyword">return</span> <span class="cm-variable-2">x</span> <span class="cm-operator">*</span> <span class="cm-variable-2">x</span>; }
   <span class="cm-keyword">var</span> <span class="cm-def">hundred</span> <span class="cm-operator">=</span> <span class="cm-number">100</span>;
@@ -198,25 +82,10 @@ other modules to use:</p>
   <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">square</span>(<span class="cm-variable-2">hundred</span>));
 })();
 <span class="cm-comment">// → 10000</span></pre>
-<p><a class="p_ident" id="p_NhLZMeErEJ" href="./10_modules.html#p_NhLZMeErEJ"></a>This code simply outputs the square of 100,
-but in the real world it could be a module that adds a method
-to some prototype or sets up a widget on a web page. It is
-wrapped in a function to prevent the variables it uses internally from
-polluting the global scope.</p>
-<p><a class="p_ident" id="p_TMPi6xxW7Y" href="./10_modules.html#p_TMPi6xxW7Y"></a>Why did we wrap the namespace
-function in a pair of parentheses? This has to do with a quirk in
-JavaScript’s syntax. If an <em>expression</em> starts with the
-keyword <code>function</code>, it is a function expression. However, if a
-<em>statement</em> starts with <code>function</code>, it is a function
-<em>declaration</em>, which requires a name and, not being an expression,
-cannot be called by writing parentheses after it. You can think of the
-extra wrapping parentheses as a trick to force the function to be
-interpreted as an expression.</p>
-<h2><a class="h_ident" id="h_tbrMjRcajd" href="./10_modules.html#h_tbrMjRcajd"></a>Objects as interfaces</h2>
-<p><a class="p_ident" id="p_jaxyyZ13ux" href="./10_modules.html#p_jaxyyZ13ux"></a>Now imagine that we want to add another function to our
-day-of-the-week module, one that goes from a day name to a
-number. We can’t simply return the function anymore but must wrap the
-two functions in an object.</p>
+<p><a class="p_ident" id="p_NhLZMeErEJ" href="./10_modules.html#p_NhLZMeErEJ"></a>Този код просто извежда квадрата на 100, но в реалния свят това може да бъде един модул, който добавя метод към някой прототип или създава нещо в уеб страница. Той е увит във функция, за да предотврати променливите, които използва вътрешно да замърсят глобалния обхват.</p>
+<p><a class="p_ident" id="p_TMPi6xxW7Y" href="./10_modules.html#p_TMPi6xxW7Y"></a>Защо увиваме <em>namespace</em> функциите в чифт скоби? Това е свързано с приумица в синтаксиса на JavaScript. Ако израза започва с думата <code>function</code>, това е израз на функция. Въпреки това, ако изявлението започва с <code>function</code>, това е декларация за функция, която изисква име и няма да бъде израз, който може да извика написаното в скобите след него. Може да мислите за допълнителните увиващи скоби, като трик да се принуди функцията да се мисли за израз.</p>
+<h2><a class="h_ident" id="h_tbrMjRcajd" href="./10_modules.html#h_tbrMjRcajd"></a>Обекти,  като интерфейс</h2>
+<p><a class="p_ident" id="p_jaxyyZ13ux" href="./10_modules.html#p_jaxyyZ13ux"></a>Сега си представете, че искаме да добавим друга функция в нашия модул на седмицата, която води от името на деня в номер. Не можем просто да върнем другата функция, трябва да увием двете функции в един обект.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_j+iqUdoU2O" href="./10_modules.html#c_j+iqUdoU2O"></a><span class="cm-keyword">var</span> <span class="cm-variable">weekDay</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>() {
   <span class="cm-keyword">var</span> <span class="cm-def">names</span> <span class="cm-operator">=</span> [<span class="cm-string">"Sunday"</span>, <span class="cm-string">"Monday"</span>, <span class="cm-string">"Tuesday"</span>, <span class="cm-string">"Wednesday"</span>,
                <span class="cm-string">"Thursday"</span>, <span class="cm-string">"Friday"</span>, <span class="cm-string">"Saturday"</span>];
@@ -228,17 +97,7 @@ two functions in an object.</p>
 
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">weekDay</span>.<span class="cm-property">name</span>(<span class="cm-variable">weekDay</span>.<span class="cm-property">number</span>(<span class="cm-string">"Sunday"</span>)));
 <span class="cm-comment">// → Sunday</span></pre>
-<p><a class="p_ident" id="p_67L/Eo8MtL" href="./10_modules.html#p_67L/Eo8MtL"></a>For bigger modules,
-gathering all the <em>exported</em> values into an object at the end of the
-function becomes awkward since many of the exported functions are
-likely to be big and you’d prefer to write them somewhere else, near
-related internal code. A convenient alternative is to declare an
-object (conventionally named <code>exports</code>) and add properties to that
-whenever we are defining something that needs to be exported. In the
-following example, the module function takes its interface object as
-an argument, allowing code outside of the function to create it and store
-it in a variable. (Outside of a function, <code>this</code> refers to the global
-scope object.)</p>
+<p><a class="p_ident" id="p_67L/Eo8MtL" href="./10_modules.html#p_67L/Eo8MtL"></a>За големи модули, събирането на всички изнасяни стойности в обект в края на функцията, става неудобно, тъй като много от изнесените функции има вероятност да бъдат големи и предпочитаме да ги напишем някъде другаде в района, свързани с вътрешен код. Удобна алтернатива е да се направи обект (условно наречен <code>exports</code>) и да добавим свойства всеки път, когато определяме нещо, което трябва да бъде изнесено. В следващия пример, функцията на модула взема интерфейса на обекта, като аргумент, позволявайки на кода извън функцията да го създаде и съхранява в променлива. (Извън функцията, <code>this</code> се отнася до глобалния обхват на обекта).</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_qHa2RFvopi" href="./10_modules.html#c_qHa2RFvopi"></a>(<span class="cm-keyword">function</span>(<span class="cm-def">exports</span>) {
   <span class="cm-keyword">var</span> <span class="cm-def">names</span> <span class="cm-operator">=</span> [<span class="cm-string">"Sunday"</span>, <span class="cm-string">"Monday"</span>, <span class="cm-string">"Tuesday"</span>, <span class="cm-string">"Wednesday"</span>,
                <span class="cm-string">"Thursday"</span>, <span class="cm-string">"Friday"</span>, <span class="cm-string">"Saturday"</span>];
@@ -253,40 +112,14 @@ scope object.)</p>
 
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">weekDay</span>.<span class="cm-property">name</span>(<span class="cm-variable">weekDay</span>.<span class="cm-property">number</span>(<span class="cm-string">"Saturday"</span>)));
 <span class="cm-comment">// → Saturday</span></pre>
-<h2><a class="h_ident" id="h_ryZfYeSnJy" href="./10_modules.html#h_ryZfYeSnJy"></a>Detaching from the global scope</h2>
-<p><a class="p_ident" id="p_AfCtO+ifwZ" href="./10_modules.html#p_AfCtO+ifwZ"></a>The previous pattern is commonly used by JavaScript
-modules intended for the browser. The module will claim a single
-global variable and wrap its code in a function in order to have its
-own private namespace. But this pattern still causes problems if
-multiple modules happen to claim the same name or if you want to load
-two versions of a module alongside each other.</p>
-<p><a class="p_ident" id="p_Y2ejGOe+u4" href="./10_modules.html#p_Y2ejGOe+u4"></a>With a little plumbing, we
-can create a system that allows one module to directly ask for the
-interface object of another module, without going through the
-global scope. Our goal is a <code>require</code> function that, when given a
-module name, will load that module’s file (from disk or the Web,
-depending on the platform we are running on) and return the
-appropriate interface value.</p>
-<p><a class="p_ident" id="p_6BOb5Vhxc7" href="./10_modules.html#p_6BOb5Vhxc7"></a>This approach solves the problems mentioned previously and has the added
-benefit of making your program’s dependencies explicit, making it
-harder to accidentally make use of some module without stating that
-you need it.</p>
-<p><a class="p_ident" id="p_qsfTCs+Kiu" href="./10_modules.html#p_qsfTCs+Kiu"></a>For <code>require</code> we need two
-things. First, we want a function <code>readFile</code>, which returns the
-content of a given file as a string. (A single such function is not
-present in standard JavaScript, but different JavaScript
-environments, such as the browser and Node.js, provide their own ways
-of accessing files. For now, let’s just pretend we have this
-function.) Second, we need to be able to actually execute this
-string as JavaScript code.</p>
-<h2 id="eval"><a class="h_ident" id="h_oeOkEDaadU" href="./10_modules.html#h_oeOkEDaadU"></a>Evaluating data as code</h2>
-<p><a class="p_ident" id="p_jvij1au4eP" href="./10_modules.html#p_jvij1au4eP"></a>There are several ways to take
-data (a string of code) and run it as part of the current program.</p>
-<p><a class="p_ident" id="p_sQ1ASk7W7E" href="./10_modules.html#p_sQ1ASk7W7E"></a>The most obvious way is the special operator
-<code>eval</code>, which will execute a string of code in the <em>current</em> scope.
-This is usually a bad idea because it breaks some of the sane
-properties that scopes normally have, such as being isolated from the
-outside world.</p>
+<h2><a class="h_ident" id="h_ryZfYeSnJy" href="./10_modules.html#h_ryZfYeSnJy"></a>Отделяне  от  глобалния  обхват</h2>
+<p><a class="p_ident" id="p_AfCtO+ifwZ" href="./10_modules.html#p_AfCtO+ifwZ"></a>Предишният модел обикновено се използва от JavaScript  за модули, предназначени за браузъра. Модулът ще регистрира една глобална променлива и ще увие нейния код във функция, така че да има свое собствено <em>namespace</em>. Но този модел все още създава проблеми, ако се случи множество модули да имат претенция към същото име или ако искате да заредите две версии на даден модул една до друга.</p>
+<p><a class="p_ident" id="p_Y2ejGOe+u4" href="./10_modules.html#p_Y2ejGOe+u4"></a>С малко връзки, можем да създадем система, която позволява на един модул да попита директно за обекта на интерфейса на друг модул, без да минава през глобалния обхват. Нашата цел е <code>require</code> функцията, на която когато се подаде името на модула, ще зареди файл (от диск или от мрежата, в зависимост от платформата) върху чиито модул ще се изпълнява и ще върне съответната стойност на интерфейса.</p>
+<p><a class="p_ident" id="p_6BOb5Vhxc7" href="./10_modules.html#p_6BOb5Vhxc7"></a>Този подход решава проблемите, споменати по-рано и има допълнителна полза от изричното вземане на зависимости в нашата програма, което прави по-трудно случайно да се възползва от някой модул, без да се посочва, че имаме нужда от него.</p>
+<p><a class="p_ident" id="p_qsfTCs+Kiu" href="./10_modules.html#p_qsfTCs+Kiu"></a>За <code>require</code> имаме нужда от две неща. На първо място, ни трябва функцията <code>readFile</code>, която връща съдържанието на даден файл, като <em>string</em>. (Тази функция не е налична в стандартния JavaScript, но различни среди за JavaScript, като браузър и Node.js, предоставят свои собствени начини за достъп до файловете. За сега нека просто се преструваме, че имаме тази функция.) На второ място, всъщност се нуждаем от изпълнение на този <em>string</em>, като JavaScript код.</p>
+<h2 id="eval"><a class="h_ident" id="h_oeOkEDaadU" href="./10_modules.html#h_oeOkEDaadU"></a>Оценяване  на  данни,  като  код</h2>
+<p><a class="p_ident" id="p_jvij1au4eP" href="./10_modules.html#p_jvij1au4eP"></a>Има няколко начина да се вземат данни от <em>string</em> код и да се пуснат, като част от настоящата програма.</p>
+<p><a class="p_ident" id="p_sQ1ASk7W7E" href="./10_modules.html#p_sQ1ASk7W7E"></a>Най-очевидният начин е със специалният оператор <code>eval</code>, който ще изпълни поредицата от код в текущия обект. Това обикновено е лоша идея, защото ще се разпадне от някое от здравомислещите свойства, които обикновено имат обхват, когато се изолират от външния свят.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_RanI4EdsYD" href="./10_modules.html#c_RanI4EdsYD"></a><span class="cm-keyword">function</span> <span class="cm-variable">evalAndReturnX</span>(<span class="cm-def">code</span>) {
   <span class="cm-variable">eval</span>(<span class="cm-variable-2">code</span>);
   <span class="cm-keyword">return</span> <span class="cm-variable">x</span>;
@@ -294,19 +127,13 @@ outside world.</p>
 
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">evalAndReturnX</span>(<span class="cm-string">"var x = 2"</span>));
 <span class="cm-comment">// → 2</span></pre>
-<p><a class="p_ident" id="p_dJLBESQexx" href="./10_modules.html#p_dJLBESQexx"></a>A better way of interpreting data as code is
-to use the <code>Function</code> constructor. This takes two arguments: a string
-containing a comma-separated list of argument names and a string
-containing the function’s body.</p>
+<p><a class="p_ident" id="p_dJLBESQexx" href="./10_modules.html#p_dJLBESQexx"></a>По добър начин за интерпретиране на данните, като код, е да се използва <code>Function</code> конструктора. Той взема два аргумента: <em>string</em>, съдържащ разделен със запетаи списък от имена на аргументи и <em>string</em>, съдържащ тяло на функция.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_cZ4LeZbFGl" href="./10_modules.html#c_cZ4LeZbFGl"></a><span class="cm-keyword">var</span> <span class="cm-variable">plusOne</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Function</span>(<span class="cm-string">"n"</span>, <span class="cm-string">"return n + 1;"</span>);
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">plusOne</span>(<span class="cm-number">4</span>));
 <span class="cm-comment">// → 5</span></pre>
-<p><a class="p_ident" id="p_8DGWg5jk7v" href="./10_modules.html#p_8DGWg5jk7v"></a>This is precisely what we need for our modules. We can wrap a module’s
-code in a function, with that function’s scope becoming our module
-scope.</p>
+<p><a class="p_ident" id="p_8DGWg5jk7v" href="./10_modules.html#p_8DGWg5jk7v"></a>Това е точно онова, от което се нуждаят нашите модули. Ние можем просто да увием кода на модула в една функция и обхвата на тази функция да е полето на модула.</p>
 <h2 id="commonjs"><a class="h_ident" id="h_v/XE3QWFpP" href="./10_modules.html#h_v/XE3QWFpP"></a>Require</h2>
-<p><a class="p_ident" id="p_hpfd8nPIk6" href="./10_modules.html#p_hpfd8nPIk6"></a>The following is a minimal
-implementation of <code>require</code>:</p>
+<p><a class="p_ident" id="p_hpfd8nPIk6" href="./10_modules.html#p_hpfd8nPIk6"></a>Следващото е минимално изпълнение на <code>require</code>:</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_1+P7EyFe1w" href="./10_modules.html#c_1+P7EyFe1w"></a><span class="cm-keyword">function</span> <span class="cm-variable">require</span>(<span class="cm-def">name</span>) {
   <span class="cm-keyword">var</span> <span class="cm-def">code</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Function</span>(<span class="cm-string">"exports"</span>, <span class="cm-variable">readFile</span>(<span class="cm-variable-2">name</span>));
   <span class="cm-keyword">var</span> <span class="cm-def">exports</span> <span class="cm-operator">=</span> {};
@@ -316,11 +143,7 @@ implementation of <code>require</code>:</p>
 
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">require</span>(<span class="cm-string">"weekDay"</span>).<span class="cm-property">name</span>(<span class="cm-number">1</span>));
 <span class="cm-comment">// → Monday</span></pre>
-<p><a class="p_ident" id="p_JrILpUgcrH" href="./10_modules.html#p_JrILpUgcrH"></a>Since the <code>new Function</code> constructor wraps the module
-code in a function, we don’t have to write a wrapping namespace
-function in the module file itself. And since we make <code>exports</code> an
-argument to the module function, the module does not have to declare
-it. This removes a lot of clutter from our example module.</p>
+<p><a class="p_ident" id="p_JrILpUgcrH" href="./10_modules.html#p_JrILpUgcrH"></a>Тъй като, <code>new Function</code> конструктора увива кодa на модула във функция, ние не трябва да пишем функция за опаковане на <em>namespace</em> пространства в модула на самия файл. И тъй като, правим <code>exports</code> аргумент на функцията на модула, самия модул не трябва да го декларира. Това премахва много елементарни неща от нашия примерен модул.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_UcVUK3ap0Z" href="./10_modules.html#c_UcVUK3ap0Z"></a><span class="cm-keyword">var</span> <span class="cm-variable">names</span> <span class="cm-operator">=</span> [<span class="cm-string">"Sunday"</span>, <span class="cm-string">"Monday"</span>, <span class="cm-string">"Tuesday"</span>, <span class="cm-string">"Wednesday"</span>,
              <span class="cm-string">"Thursday"</span>, <span class="cm-string">"Friday"</span>, <span class="cm-string">"Saturday"</span>];
 
@@ -330,32 +153,15 @@ it. This removes a lot of clutter from our example module.</p>
 <span class="cm-variable">exports</span>.<span class="cm-property">number</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">name</span>) {
   <span class="cm-keyword">return</span> <span class="cm-variable">names</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">name</span>);
 };</pre>
-<p><a class="p_ident" id="p_B75dGyOs9V" href="./10_modules.html#p_B75dGyOs9V"></a>When using this pattern, a module typically
-starts with a few variable declarations that load the modules it
-depends on.</p>
+<p><a class="p_ident" id="p_B75dGyOs9V" href="./10_modules.html#p_B75dGyOs9V"></a>Когато използваме този модел, един модул обикновено започва с няколко декларации на променливи, от които модулите зависят.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_hczzYLixJt" href="./10_modules.html#c_hczzYLixJt"></a><span class="cm-keyword">var</span> <span class="cm-variable">weekDay</span> <span class="cm-operator">=</span> <span class="cm-variable">require</span>(<span class="cm-string">"weekDay"</span>);
 <span class="cm-keyword">var</span> <span class="cm-variable">today</span> <span class="cm-operator">=</span> <span class="cm-variable">require</span>(<span class="cm-string">"today"</span>);
 
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">weekDay</span>.<span class="cm-property">name</span>(<span class="cm-variable">today</span>.<span class="cm-property">dayNumber</span>()));</pre>
-<p><a class="p_ident" id="p_5GfcRhlMLC" href="./10_modules.html#p_5GfcRhlMLC"></a>The simplistic implementation of <code>require</code> given previously
-has several problems. For one, it will load and run a module every
-time it is <code>require</code>d, so if several modules have the same
-dependency or a <code>require</code> call is put inside a function that will
-be called multiple times, time and energy will be wasted.</p>
-<p><a class="p_ident" id="p_zLUwyIBMDV" href="./10_modules.html#p_zLUwyIBMDV"></a>This can be solved by storing the modules that have already
-been loaded in an object and simply returning the existing value when
-one is loaded multiple times.</p>
-<p><a class="p_ident" id="p_Ylx5bX6l+o" href="./10_modules.html#p_Ylx5bX6l+o"></a>The second problem is that it is
-not possible for a module to directly export a value other than the
-<code>exports</code> object, such as a function. For example, a module might want
-to export only the constructor of the object type it defines. Right
-now, it cannot do that because <code>require</code> always uses the <code>exports</code>
-object it creates as the exported value.</p>
-<p><a class="p_ident" id="p_RwxY5rq2Qj" href="./10_modules.html#p_RwxY5rq2Qj"></a>The traditional solution for this is to provide
-modules with another variable, <code>module</code>, which is an object that has a
-property <code>exports</code>. This property initially points at the empty object
-created by <code>require</code> but can be overwritten with another value in
-order to export something else.</p>
+<p><a class="p_ident" id="p_5GfcRhlMLC" href="./10_modules.html#p_5GfcRhlMLC"></a>На пръв поглед изпълнението на <code>require</code> дадено преди това, може да има няколко проблема. От една страна, то ще зареди и стартира модул всеки път когато се изисква, така че ако няколко модула имат същата зависимост или извикването на <code>require</code> се постави вътре във функция, която се извиква многократно, се губи време и енергия.</p>
+<p><a class="p_ident" id="p_zLUwyIBMDV" href="./10_modules.html#p_zLUwyIBMDV"></a>Това може да бъде решено чрез съхраняване на модулите, които вече са заредени в обект и просто връщаме съществуващата стойност , когато някой е зареден многократно.</p>
+<p><a class="p_ident" id="p_Ylx5bX6l+o" href="./10_modules.html#p_Ylx5bX6l+o"></a>Вторият проблем е, че не е възможно за един модул да изнася директно стойност, различна от <code>exports</code> обект, подобно на функция. Например, от един модул може да искате да експортирате само конструктора на типа на обекта, който го определя. Точно сега, той не може да направи това, защото <code>require</code> винаги използва <code>exports</code> обекта, който създава експортната стойност.</p>
+<p><a class="p_ident" id="p_RwxY5rq2Qj" href="./10_modules.html#p_RwxY5rq2Qj"></a>Традиционното решение за това е да се осигури модул с друга променлива <code>module</code>, която е обект и има свойството <code>exports</code>. Това свойство първоначално посочва празен обект, създаден от <code>require</code> но може да бъде заменено с друга стойност, за да експортира нещо друго.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_cUUt/BCrSf" href="./10_modules.html#c_cUUt/BCrSf"></a><span class="cm-keyword">function</span> <span class="cm-variable">require</span>(<span class="cm-def">name</span>) {
   <span class="cm-keyword">if</span> (<span class="cm-variable-2">name</span> <span class="cm-keyword">in</span> <span class="cm-variable">require</span>.<span class="cm-property">cache</span>)
     <span class="cm-keyword">return</span> <span class="cm-variable">require</span>.<span class="cm-property">cache</span>[<span class="cm-variable-2">name</span>];
@@ -368,56 +174,18 @@ order to export something else.</p>
   <span class="cm-keyword">return</span> <span class="cm-keyword">module</span>.<span class="cm-variable-2">exports</span>;
 }
 <span class="cm-variable">require</span>.<span class="cm-property">cache</span> <span class="cm-operator">=</span> <span class="cm-variable">Object</span>.<span class="cm-property">create</span>(<span class="cm-atom">null</span>);</pre>
-<p><a class="p_ident" id="p_Dv+TulRay7" href="./10_modules.html#p_Dv+TulRay7"></a>We now have a module system that uses a single
-global variable (<code>require</code>) to allow modules to find and use each
-other without going through the global scope.</p>
-<p><a class="p_ident" id="p_rvZ9T+1c9y" href="./10_modules.html#p_rvZ9T+1c9y"></a>This style of module system is called <em>CommonJS modules</em>, after
-the pseudo-standard that first specified it. It is built into the
-Node.js system. Real implementations do a lot more than the
-example I showed. Most importantly, they have a much more intelligent
-way of going from a module name to an actual piece of code, allowing
-both pathnames relative to the current file and module names that
-point directly to locally installed modules.</p>
-<h2 id="amd"><a class="h_ident" id="h_A4LDSlASUo" href="./10_modules.html#h_A4LDSlASUo"></a>Slow-loading modules</h2>
-<p><a class="p_ident" id="p_isvKkfyGNv" href="./10_modules.html#p_isvKkfyGNv"></a>Though it is possible to use the CommonJS module style when
-writing JavaScript for the browser, it is somewhat involved. The
-reason for this is that reading a file (module) from the Web is a lot
-slower than reading it from the hard disk. While a script is running
-in the browser, nothing else can happen to the website on which it
-runs, for reasons that will become clear in
-<a href="./14_event.html#timeline">Chapter 14</a>. This means that if every
-<code>require</code> call went and fetched something from some faraway web
-server, the page would freeze for a painfully long time while loading
-its scripts.</p>
-<p><a class="p_ident" id="p_Ce7X8+/o7v" href="./10_modules.html#p_Ce7X8+/o7v"></a>One way to
-work around this problem is to run a program like
-<a href="http://browserify.org/"><em>Browserify</em></a> on your code before you serve it
-on a web page. This will look for calls to <code>require</code>, resolve all
-dependencies, and gather the needed code into a single big file.
-The website itself can simply load this file to get all the modules
-it needs.</p>
-<p><a class="p_ident" id="p_L9zjrOe2Un" href="./10_modules.html#p_L9zjrOe2Un"></a>Another solution is to wrap the
-code that makes up your module in a function so that the module loader can first load its dependencies in the background and then
-call the function, initializing the module, when the dependencies
-have been loaded. That is what the Asynchronous Module Definition
-(AMD) module system does.</p>
-<p><a class="p_ident" id="p_69ZNnLLNhP" href="./10_modules.html#p_69ZNnLLNhP"></a>Our trivial program with dependencies would look
-like this in AMD:</p>
+<p><a class="p_ident" id="p_Dv+TulRay7" href="./10_modules.html#p_Dv+TulRay7"></a>Сега имаме система на модул, който използва една глобална променлива (<code>require</code>), която да позволи на модулите да се открият и използват взаимно, без да минават през глобалния обхват.</p>
+<p><a class="p_ident" id="p_rvZ9T+1c9y" href="./10_modules.html#p_rvZ9T+1c9y"></a>Този стил на писане на система от модули се нарича <em>CommonJS modules</em>, след псевдо стандарт, който пръв го е определил. Тя е вградена система в Node.js. Реалните внедрявания в Node.js правят много повече от примера, който показах. Най-важното е, че имат много по-интелигентен начин за преминаване от името на модула до действителното парче код, който позволява и двете: пътищата и файлове, в сравнение на текущите файлове и имена на модули, които сочат директно към локално инсталираните модули.</p>
+<h2 id="amd"><a class="h_ident" id="h_A4LDSlASUo" href="./10_modules.html#h_A4LDSlASUo"></a>Бавно  зареждане  на  модули</h2>
+<p><a class="p_ident" id="p_isvKkfyGNv" href="./10_modules.html#p_isvKkfyGNv"></a>Въпреки, че е възможно използването на стила CommonJS при писане на JavaScript за браузъри, той е малко неясен. Причината за това е, че четенето на файл (модул) от Интернет е малко по-бавно, от колкото да се прочете от твърд диск. Докато скрипта се изпълнява в браузъра, нищо друго не може да се случи на Интернет страницата, на която работи, по причини които ще станат известни в <a href="./14_event.html#timeline">Глава 14</a>. Това означава, че при всяко извикване на <code>require</code> да отиде и извади нещо от някакъв далечен уеб сървър, страницата ще замръзне за болезнено дълго време при зареждането на скриптовете.</p>
+<p><a class="p_ident" id="p_Ce7X8+/o7v" href="./10_modules.html#p_Ce7X8+/o7v"></a>Един начин да се справите с този проблем е да стартирате програма, като <a href="http://browserify.org/"><em>Browserify</em></a> в кода си, преди да сте го връчили на уеб страницата. Тя ще търси за извиквания на <code>require</code>, решавайки всички зависимости и събирайки необходимия код в един голям файл. В самия сайт може просто да заредите този файл за да получите всички модули от които се нуждаете.</p>
+<p><a class="p_ident" id="p_L9zjrOe2Un" href="./10_modules.html#p_L9zjrOe2Un"></a>Друго решение е да увиете кода, който прави вашия модул във функция, така че зареждащия модул, първо да зареди фона и след това да извика функцията за инициализиране на модул, когато зависимостите са качени. Това е така нареченото а-синхронно зареждане на системата- Asynchronous Module Definition (AMD).</p>
+<p><a class="p_ident" id="p_69ZNnLLNhP" href="./10_modules.html#p_69ZNnLLNhP"></a>Нашата тривиална програма със зависимости, ще изглежда така в AMD:</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_+VGbHf95V3" href="./10_modules.html#c_+VGbHf95V3"></a><span class="cm-variable">define</span>([<span class="cm-string">"weekDay"</span>, <span class="cm-string">"today"</span>], <span class="cm-keyword">function</span>(<span class="cm-def">weekDay</span>, <span class="cm-def">today</span>) {
   <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">weekDay</span>.<span class="cm-property">name</span>(<span class="cm-variable-2">today</span>.<span class="cm-property">dayNumber</span>()));
 });</pre>
-<p><a class="p_ident" id="p_/aD387r6Uv" href="./10_modules.html#p_/aD387r6Uv"></a>The <code>define</code>
-function is central to this approach. It takes first an array of
-module names and then a function that takes one argument for each
-dependency. It will load the dependencies (if they haven’t already
-been loaded) in the background, allowing the page to continue working
-while the files are being fetched. Once all dependencies are loaded,
-<code>define</code> will call the function it was given, with the interfaces
-of those dependencies as arguments.</p>
-<p><a class="p_ident" id="p_w7/Slpc0XV" href="./10_modules.html#p_w7/Slpc0XV"></a>The modules that are loaded
-this way must themselves contain a call to <code>define</code>. The value used as
-their interface is whatever was returned by the function passed to
-<code>define</code>. Here is the <code>weekDay</code> module again:</p>
+<p><a class="p_ident" id="p_/aD387r6Uv" href="./10_modules.html#p_/aD387r6Uv"></a>Функцията <code>define</code> е в центъра на този подход. Тя взема първия модул с масив от имена и след това функцията, която приема само един аргумент за всяка зависимост. Тя ще зареди зависимостите(ако още не са заредени) във фонов режим, което позволява на страницата да продължи да работи, докато файловете се зареждат. След като, всички зависимости са заредени, <code>define</code> ще извика функцията с интерфейсите на тези зависимости, като аргументи.</p>
+<p><a class="p_ident" id="p_w7/Slpc0XV" href="./10_modules.html#p_w7/Slpc0XV"></a>Модулите, които се зареждат по този начин трябва да съдържат извикване към <code>define</code>. Стойността, която се използва за техния интерфейс е тази, която се връща от функцията подадена към <code>define</code>. Сега тука е модулът <code>weekDay</code> отново:</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_cye5TZvdJH" href="./10_modules.html#c_cye5TZvdJH"></a><span class="cm-variable">define</span>([], <span class="cm-keyword">function</span>() {
   <span class="cm-keyword">var</span> <span class="cm-def">names</span> <span class="cm-operator">=</span> [<span class="cm-string">"Sunday"</span>, <span class="cm-string">"Monday"</span>, <span class="cm-string">"Tuesday"</span>, <span class="cm-string">"Wednesday"</span>,
                <span class="cm-string">"Thursday"</span>, <span class="cm-string">"Friday"</span>, <span class="cm-string">"Saturday"</span>];
@@ -426,19 +194,9 @@ their interface is whatever was returned by the function passed to
     <span class="cm-property">number</span>: <span class="cm-keyword">function</span>(<span class="cm-def">name</span>) { <span class="cm-keyword">return</span> <span class="cm-variable-2">names</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">name</span>); }
   };
 });</pre>
-<p><a class="p_ident" id="p_GARnQl+u0i" href="./10_modules.html#p_GARnQl+u0i"></a>To be
-able to show a minimal implementation of <code>define</code>, we will pretend we
-have a <code>backgroundReadFile</code> function that takes a filename and a
-function and calls the function with the content of the file as
-soon as it has finished loading it. (<a href="./17_http.html#getURL">Chapter
-17</a> will explain how to write that function.)</p>
-<p><a class="p_ident" id="p_xNPCNpRiIX" href="./10_modules.html#p_xNPCNpRiIX"></a>For the purpose of keeping track of modules while they are being
-loaded, the implementation of <code>define</code> will use objects that describe
-the state of modules, telling us whether they are available yet and
-providing their interface when they are.</p>
-<p><a class="p_ident" id="p_/Unllb03Bv" href="./10_modules.html#p_/Unllb03Bv"></a>The <code>getModule</code> function, when given a name, will return such an
-object and ensure that the module is scheduled to be loaded. It uses
-a cache object to avoid loading the same module twice.</p>
+<p><a class="p_ident" id="p_GARnQl+u0i" href="./10_modules.html#p_GARnQl+u0i"></a>За да мога да покажа минимално изпълнение на <code>define</code>, ще се преструваме, че имаме <code>backgroundReadFile</code> функция, която се използва, като име на файл и функция, и извиква функцията със съдържанието на файла, веднага след, като приключи зареждането. (<a href="./17_http.html#getURL">Глава 17</a> ще ви обясни, как се пишат такива функции.)</p>
+<p><a class="p_ident" id="p_xNPCNpRiIX" href="./10_modules.html#p_xNPCNpRiIX"></a>За целите за проследяване на модулите, докато са натоварени, изпълнението на <code>define</code> ще използва преки допълнения, които описват състоянието на модулите и ни казват дали те са на разположение и предоставящи техния интрефейс, когато са.</p>
+<p><a class="p_ident" id="p_/Unllb03Bv" href="./10_modules.html#p_/Unllb03Bv"></a>Функцията <code>getModule</code>, когато дава име, ще върне такъв обект и ще гарантира, че модулът планирано е зареден. Тя използва кеш обект, за да се избегне натоварване на същия модул два пъти.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_hSHaK3C/lo" href="./10_modules.html#c_hSHaK3C/lo"></a><span class="cm-keyword">var</span> <span class="cm-variable">defineCache</span> <span class="cm-operator">=</span> <span class="cm-variable">Object</span>.<span class="cm-property">create</span>(<span class="cm-atom">null</span>);
 <span class="cm-keyword">var</span> <span class="cm-variable">currentMod</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
 
@@ -456,22 +214,8 @@ a cache object to avoid loading the same module twice.</p>
   });
   <span class="cm-keyword">return</span> <span class="cm-keyword">module</span>;
 }</pre>
-<p><a class="p_ident" id="p_r9NqByjA7c" href="./10_modules.html#p_r9NqByjA7c"></a>We assume the loaded file also contains a
-(single) call to <code>define</code>. The <code>currentMod</code> variable is used to tell
-this call about the module object that is currently being loaded so
-that it can update this object when it finishes loading. We will come
-back to this mechanism in a moment.</p>
-<p><a class="p_ident" id="p_lX37OjlA5W" href="./10_modules.html#p_lX37OjlA5W"></a>The <code>define</code> function itself uses
-<code>getModule</code> to fetch or create the module objects for the current
-module’s dependencies. Its task is to schedule the <code>moduleFunction</code>
-(the function that contains the module’s actual code) to be run
-whenever those dependencies are loaded. For this purpose, it defines a
-function <code>whenDepsLoaded</code> that is added to the <code>onLoad</code> array of all
-dependencies that are not yet loaded. This function immediately
-returns if there are still unloaded dependencies, so it will do
-actual work only once, when the last dependency has finished loading. It is
-also called immediately, from <code>define</code> itself, in case there are no
-dependencies that need to be loaded.</p>
+<p><a class="p_ident" id="p_r9NqByjA7c" href="./10_modules.html#p_r9NqByjA7c"></a>Ние предполагаме, че заредения файл съдържа също(единично) извикване към <code>define</code>. Променливата <code>currentMod</code> се използва за да отрази настоящата покана към обекта модул, който в момента се зарежда, така че да може да актуализира този обект, когато той завърши качването. Ние ще се върнем на този механизъм в един момент.</p>
+<p><a class="p_ident" id="p_lX37OjlA5W" href="./10_modules.html#p_lX37OjlA5W"></a>Самата функция <code>define</code> използва <code>getModule</code> да донесе или да създаде обекти на модула за зависимости с текущия модул. Нейната задача е да планира <code>moduleFunction</code> (функцията, която съдържа действителния код на модула) да бъде стартирана всеки път, когато се зареждат тези зависимости. За тази цел тя определя функцията <code>whenDepsLoaded</code>, която да добавя към масива <code>onLoad</code> всички зависимости, които все още не са заредени. Тази функция се връща незабавно, ако все още има ненатоварени зависимости, така че ще извърши действителна работа само веднъж, когато последната зависимост приключи със зареждането. Тя също така извиква веднага <code>define</code> на себе си, в случай, че няма зависимости, които трябва да бъдат заредени.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_1c60YXnLU3" href="./10_modules.html#c_1c60YXnLU3"></a><span class="cm-keyword">function</span> <span class="cm-variable">define</span>(<span class="cm-def">depNames</span>, <span class="cm-def">moduleFunction</span>) {
   <span class="cm-keyword">var</span> <span class="cm-def">myMod</span> <span class="cm-operator">=</span> <span class="cm-variable">currentMod</span>;
   <span class="cm-keyword">var</span> <span class="cm-def">deps</span> <span class="cm-operator">=</span> <span class="cm-variable-2">depNames</span>.<span class="cm-property">map</span>(<span class="cm-variable">getModule</span>);
@@ -495,119 +239,30 @@ dependencies that need to be loaded.</p>
   }
   <span class="cm-variable-2">whenDepsLoaded</span>();
 }</pre>
-<p><a class="p_ident" id="p_T+RexzI7A0" href="./10_modules.html#p_T+RexzI7A0"></a>When all dependencies are available,
-<code>whenDepsLoaded</code> calls the function that holds the module, giving it
-the dependencies’ interfaces as arguments.</p>
-<p><a class="p_ident" id="p_8Neb8ba81Q" href="./10_modules.html#p_8Neb8ba81Q"></a>The first thing <code>define</code> does is store the value that <code>currentMod</code> had
-when it was called in a variable <code>myMod</code>. Remember that <code>getModule</code>,
-just before evaluating the code for a module, stored the corresponding
-module object in <code>currentMod</code>. This allows <code>whenDepsLoaded</code> to store
-the return value of the module function in that module’s <code>exports</code>
-property, set the module’s <code>loaded</code> property to true, and call all the
-functions that are waiting for the module to load.</p>
-<p><a class="p_ident" id="p_KBR+VgwyVz" href="./10_modules.html#p_KBR+VgwyVz"></a>This code is a lot harder to follow than
-the <code>require</code> function. Its execution does not follow a simple,
-predictable path. Instead, multiple operations are set up to happen at
-some unspecified time in the future, which obscures the way the
-code executes.</p>
-<p><a class="p_ident" id="p_uewjoUxlIw" href="./10_modules.html#p_uewjoUxlIw"></a>A real AMD implementation is, again, quite a lot more clever about
-resolving module names to actual URLs and generally more robust than
-the one shown previously. The <em>RequireJS</em> (<a href="http://requirejs.org/"><em>requirejs.org</em></a>) project provides
-a popular implementation of this style of module loader.</p>
-<h2><a class="h_ident" id="h_4266RdeHYR" href="./10_modules.html#h_4266RdeHYR"></a>Interface design</h2>
-<p><a class="p_ident" id="p_IUZ7uTWwwd" href="./10_modules.html#p_IUZ7uTWwwd"></a>Designing interfaces for modules and object
-types is one of the subtler aspects of programming. Any nontrivial
-piece of functionality can be modeled in various ways. Finding a way that
-works well requires insight and foresight.</p>
-<p><a class="p_ident" id="p_KweUtWCb7f" href="./10_modules.html#p_KweUtWCb7f"></a>The best way to learn the value of good interface design is to use
-lots of interfaces—some good, some bad. Experience will teach
-you what works and what doesn’t. Never assume that a painful interface
-is “just the way it is”. Fix it, or wrap it in a new interface that
-works better for you.</p>
-<h3><a class="h_ident" id="h_D19q+FXBVd" href="./10_modules.html#h_D19q+FXBVd"></a>Predictability</h3>
-<p><a class="p_ident" id="p_2adqTW0fxP" href="./10_modules.html#p_2adqTW0fxP"></a>If programmers
-can predict the way your interface works, they (or you) won’t get
-sidetracked as often by the need to look up how to use it. Thus, try
-to follow conventions. When there is another module or part of the
-standard JavaScript environment that does something similar to what
-you are implementing, it might be a good idea to make your interface
-resemble the existing interface. That way, it’ll feel familiar to
-people who know the existing interface.</p>
-<p><a class="p_ident" id="p_6l6v5cakoT" href="./10_modules.html#p_6l6v5cakoT"></a>Another area where predictability is important is the
-actual <em>behavior</em> of your code. It can be tempting to make an
-unnecessarily clever interface with the justification that it’s more
-convenient to use. For example, you could accept all kinds of
-different types and combinations of arguments and do the “right
-thing” for all of them. Or you could provide dozens of specialized
-convenience functions that provide slightly different flavors of your
-module’s functionality. These might make code that builds on your
-interface slightly shorter, but they will also make it much harder for
-people to build a clear mental model of the module’s behavior.</p>
+<p><a class="p_ident" id="p_T+RexzI7A0" href="./10_modules.html#p_T+RexzI7A0"></a>Когато всички зависимости са на разположение, <code>whenDepsLoaded</code> извиква функция, която държи модула, който ще даде интерфейсите - зависимости, като аргументи.</p>
+<p><a class="p_ident" id="p_8Neb8ba81Q" href="./10_modules.html#p_8Neb8ba81Q"></a>Първото нещо, което <code>define</code> прави е да съхрани стойностите, които <code>currentMod</code> имa, когато е извикан с променливата <code>myMod</code>. Не забравяйте, че <code>getModule</code> точно преди оценяването на кода за модул, съхранява съответния модул обект в <code>currentMod</code>. Това позволява на <code>whenDepsLoaded</code> да съхранява стойностa върнатa от функцията на модула в този модул със свойството <code>exports</code>, определя свойството на модула <code>loaded</code> да е <em>true</em> и призовава всички функции, които са в очакване на модула да се зареди.</p>
+<p><a class="p_ident" id="p_KBR+VgwyVz" href="./10_modules.html#p_KBR+VgwyVz"></a>Този код е много по-труден за следване от <code>require</code> функцията. Неговото изпълнение не следва, прост, начертан план. Вместо това, множество операции са създадени да се случат в някакъв неопределен момент в бъдещето, което замъглява пътя на кода, който се изпълнява.</p>
+<p><a class="p_ident" id="p_uewjoUxlIw" href="./10_modules.html#p_uewjoUxlIw"></a>Истинското изпълнение на AMD, е много по-интелигентно при определяне на имената на модулите от реалните Интернет адреси и като цяло по-стабилно, от колкото това показано по-рано. <em>RequireJS</em> (<a href="http://requirejs.org/"><em>requirejs.org</em></a>) осигурява изпълнението на този популярен стил за модулно зареждане.</p>
+<h2><a class="h_ident" id="h_4266RdeHYR" href="./10_modules.html#h_4266RdeHYR"></a>Интерфейс  дизайн</h2>
+<p><a class="p_ident" id="p_IUZ7uTWwwd" href="./10_modules.html#p_IUZ7uTWwwd"></a>Проектиране на интерфейси за модули и типове обекти е един от най-фините аспекти на програмирането. Всяко не тривиално парче функционалност може да се моделира по различни начини. Намирането на начин, който работи добре изисква проницателност и далновидност.</p>
+<p><a class="p_ident" id="p_KweUtWCb7f" href="./10_modules.html#p_KweUtWCb7f"></a>Най-добрият начин за научаване на добрия дизайн на интерфейса е да се използват много интерфейси, някои добри, някои лоши. Опитът ще ви научи, какво работи и какво не. Никога не допускайте, че трудният интерфейс е “такъв, какъвто е”. Фиксирайте го или го увийте в нов интерфейс, който работи по-добре.</p>
+<h3><a class="h_ident" id="h_D19q+FXBVd" href="./10_modules.html#h_D19q+FXBVd"></a>Предвидимост</h3>
+<p><a class="p_ident" id="p_2adqTW0fxP" href="./10_modules.html#p_2adqTW0fxP"></a>Ако програмистите могат да прогнозират пътя на работа на интерфейса, те няма да се отклоняват от целта толкова често при необходимостта да гледат, как се използва. Така се опитват да следват конвенциите. Когато има друг модул или част от стандартна JavaScript среда, която прави нещо подобно на това, което се опитвате да приложите, може би е добра идея да направите вашия интерфейс по подобие на съществуващ интерфейс. По този начин, ще се почувствате близки с хора, които знаят за съществуващия интерфейс.</p>
+<p><a class="p_ident" id="p_6l6v5cakoT" href="./10_modules.html#p_6l6v5cakoT"></a>Друга област, в която предсказуемоста е важна, е реалното поведение на вашия код. Може да се изкушите да направите ненужно сложен интерфейс с основанието, че е по-удобен за използване. Например, може да приеме всички видове от различни видове комбинации от аргументи и да направи “правилното” нещо за всички тях. Или пък може да предостави десетки специализирани функции, които осигуряват удобство с малко по различен вкус на функционалност на модула. Това може да направи кода, на който се основава вашия интерфейс малко по-къс, но също така ще го направи много по-труден за хората да градят по-ясен смислен модел на поведение на модула.</p>
 <h3><a class="h_ident" id="h_+NeFt8aXxf" href="./10_modules.html#h_+NeFt8aXxf"></a>Composability</h3>
-<p><a class="p_ident" id="p_9Nt/796F0G" href="./10_modules.html#p_9Nt/796F0G"></a>In your interfaces, try to use the simplest data structures possible and make functions do a single, clear thing.
-Whenever practical, make them pure functions (see
-<a href="./03_functions.html#pure">Chapter 3</a>).</p>
-<p><a class="p_ident" id="p_qicKwwcIoO" href="./10_modules.html#p_qicKwwcIoO"></a>For example, it is not uncommon for modules to
-provide their own array-like collection objects, with their own
-interface for counting and extracting elements. Such objects won’t
-have <code>map</code> or <code>forEach</code> methods, and any existing function that
-expects a real array won’t be able to work with them. This is an
-example of poor <em>composability</em>—the module cannot be easily composed
-with other code.</p>
-<p><a class="p_ident" id="p_XJefBK7ici" href="./10_modules.html#p_XJefBK7ici"></a>One example would be a
-module for spell-checking text, which we might need when we want to
-write a text editor. The spell-checker could be made to operate
-directly on whichever complicated data structures the editor uses
-and directly call internal functions in the editor to have the user
-choose between spelling suggestions. If we go that way, the module
-cannot be used with any other programs. On the other hand, if we
-define the spell-checking interface so that you can pass it a simple
-string and it will return the position in the string where it found a
-possible misspelling, along with an array of suggested corrections,
-then we have an interface that could also be composed with other
-systems because strings and arrays are always available in
-JavaScript.</p>
-<h3><a class="h_ident" id="h_vguoN2JlWc" href="./10_modules.html#h_vguoN2JlWc"></a>Layered interfaces</h3>
-<p><a class="p_ident" id="p_gVRzuTdJxo" href="./10_modules.html#p_gVRzuTdJxo"></a>When designing an interface for a complex piece of
-functionality—sending email, for example—you often run into a dilemma.
-On the one hand, you do not want to overload the user of your
-interface with details. They shouldn’t have to study your interface
-for 20 minutes before they can send an email. On the other hand, you
-do not want to hide all the details either—when people need to do
-complicated things with your module, they should be able to.</p>
-<p><a class="p_ident" id="p_UAqdlcM0M6" href="./10_modules.html#p_UAqdlcM0M6"></a>Often the solution is to provide two interfaces: a detailed
-<em>low-level</em> one for complex situations and a simple <em>high-level</em> one
-for routine use. The second can usually be built easily using the
-tools provided by the first. In the email module, the high-level
-interface could just be a function that takes a message, a sender
-address, and a receiver address and then sends the email. The low-level
-interface would allow full control over email headers, attachments,
-HTML mail, and so on.</p>
-<h2><a class="h_ident" id="h_ErccPg/l98" href="./10_modules.html#h_ErccPg/l98"></a>Summary</h2>
-<p><a class="p_ident" id="p_hGwRhRocwV" href="./10_modules.html#p_hGwRhRocwV"></a>Modules provide structure to bigger programs by separating the code
-into different files and namespaces. Giving these modules well-defined
-interfaces makes them easier to use and reuse
-and makes it possible to continue using them as the module
-itself evolves.</p>
-<p><a class="p_ident" id="p_G2usOklg33" href="./10_modules.html#p_G2usOklg33"></a>Though the JavaScript language is characteristically unhelpful
-when it comes to modules, the flexible functions and objects it
-provides make it possible to define rather nice module systems.
-Function scopes can be used as internal namespaces for the module, and
-objects can be used to store sets of exported values.</p>
-<p><a class="p_ident" id="p_0LAk7BPgRr" href="./10_modules.html#p_0LAk7BPgRr"></a>There are two popular, well-defined approaches to such modules. One is
-called <em>CommonJS Modules</em> and revolves around a <code>require</code> function
-that fetches a module by name and returns its interface. The other is
-called <em>AMD</em> and uses a <code>define</code> function that takes an array of
-module names and a function and, after loading the modules, runs the
-function with their interfaces as arguments.</p>
-<h2><a class="h_ident" id="h_TcUD2vzyMe" href="./10_modules.html#h_TcUD2vzyMe"></a>Exercises</h2>
-<h3><a class="h_ident" id="h_Ft63zbY95i" href="./10_modules.html#h_Ft63zbY95i"></a>Month names</h3>
-<p><a class="p_ident" id="p_dU0pnoSPR9" href="./10_modules.html#p_dU0pnoSPR9"></a>Write a
-simple module similar to the <code>weekDay</code> module that can convert month
-numbers (zero-based, as in the <code>Date</code> type) to names and can convert names back
-to numbers. Give it its own namespace since it will need an internal
-array of month names, and use plain JavaScript, without any module
-loader system.</p>
+<p><a class="p_ident" id="p_9Nt/796F0G" href="./10_modules.html#p_9Nt/796F0G"></a>Във вашите интерфейси се опитайте да използвате най-простите структури от данни и правете вашите функции, ако е възможно да правят едно, ясно нещо. Винаги, когато е практично използвайте чисти функции (виж <a href="./03_functions.html#pure">Глава 3</a>).</p>
+<p><a class="p_ident" id="p_qicKwwcIoO" href="./10_modules.html#p_qicKwwcIoO"></a>Например, не е необичайно за модули да предоставят техния собствен масиво - подобен обект, със собствен интерфейс за отчитане и извличане на елементи. Такива обекти няма да имат <code>map</code> и <code>forEach</code> методи и всяка съществуваща функция, която очаква реален масив няма да бъде в състояние да работи с тях. Това е пример за лошо <em>composability</em> - модулът не може лесно да бъде съставен с друг код.</p>
+<p><a class="p_ident" id="p_XJefBK7ici" href="./10_modules.html#p_XJefBK7ici"></a>Един пример ще бъде модул за проверка на правописа на текст, който може да ни трябва, когато искаме да напишем текстов редактор. Проверката на правописа може да бъде направена да оперира директно със сложни структури от данни на използвания редактор и директно да извиква вътрешните функции на този редактор, за да има потребителя избор между предложения за правописа. Ако вървим по този път, модулът не може да се използва с други програми. От друга страна, ако ние определяме интерфейса за проверка на правописа, можем да го подадем на прост <em>string</em> и той да върне позиция в този <em>string</em>, където е възможно да има правописна грешка, заедно с набор от предложения за корекции, тогава имаме интерфейс, който може да бъде в състава на други системи, защото <em>strings</em> и масиви са винаги на разположение в JavaScript.</p>
+<h3><a class="h_ident" id="h_vguoN2JlWc" href="./10_modules.html#h_vguoN2JlWc"></a>Слоеве  от  интерфейси</h3>
+<p><a class="p_ident" id="p_gVRzuTdJxo" href="./10_modules.html#p_gVRzuTdJxo"></a>При проектирането на интерфейс за комплекс от парчета функционалност - например, за изпращане на поща - често се сблъскваме с една дилема. От една страна не искате да претоварите потребителя на вашия интерфейс с подробности. Той не трябва да учи вашия интерфейс 20 минути, преди да изпрати съобщение. От друга старана, вие не искате да скриете всички детайли, когато хората трябва да правят сложни неща с вашия модул, той трябва да бъде в състояние за това.</p>
+<p><a class="p_ident" id="p_UAqdlcM0M6" href="./10_modules.html#p_UAqdlcM0M6"></a>Често решението е да се осигурят  два интерфейса: подробен ниско ниво за комплексни ситуации и високо ниво за рутинно използване. Втория обикновено лесно може да бъде построен с помоща на инструментите предоставени от първия. В модула за поща, интерфейса на високо ниво би могъл да бъде само една функция, с която се съобщава адреса на подателя и адреса на получателя  и след това се изпраша емейла. Интерфейса на ниско ниво ще позволи пълен контрол над пощата: заглавие, прикачени файлове, HTML поща и т.н.</p>
+<h2><a class="h_ident" id="h_ErccPg/l98" href="./10_modules.html#h_ErccPg/l98"></a>Резюме</h2>
+<p><a class="p_ident" id="p_hGwRhRocwV" href="./10_modules.html#p_hGwRhRocwV"></a>Модулите предоставят структура за по-големи програми, чрез отделяне на кода в различни файлове и <em>namespaces</em>. Давайки на тези модули добре дефинирани интерфейси ги прави по-лесни за използване и преизползване, и дава възможност да се продължи използването им, когато модулът се развива.</p>
+<p><a class="p_ident" id="p_G2usOklg33" href="./10_modules.html#p_G2usOklg33"></a>Въпреки, че езика на JavaScript е характерно безполезен, когато става въпрос за модули, гъвкавите функции и обекти, които той предоставя дават възможност да се определят по-скоро хубави системи от модули. Кодовете на функциите могат да се използват за вътрешни <em>namespaces</em> за модула, а обектите могат да се използват за съхранение на комплект от експортни стойности.</p>
+<p><a class="p_ident" id="p_0LAk7BPgRr" href="./10_modules.html#p_0LAk7BPgRr"></a>Има два популярни добре определени подхода към тези модули. Единият се нарича <em>CommonJS Modules</em> и се върти около <code>require</code> функцията, която извлича модул по име и връща интерфейса му. Другата се нарича <em>AMD</em> и използва <code>define</code> функцията, която взема масив от имена на модули и функции, и след като зареди модулите стартира функция с нейните потребителски интерфейси, като аргументи.</p>
+<h2><a class="h_ident" id="h_TcUD2vzyMe" href="./10_modules.html#h_TcUD2vzyMe"></a>Упражнения</h2>
+<h3><a class="h_ident" id="h_Ft63zbY95i" href="./10_modules.html#h_Ft63zbY95i"></a>Имената на месеца</h3>
+<p><a class="p_ident" id="p_dU0pnoSPR9" href="./10_modules.html#p_dU0pnoSPR9"></a>Напишете прост модул подобен на <code>weekDay</code>, който може да конвертира номера на месец(с нулева база, като в типа <code>Date</code>) в имена и имена обратно в номера. Дайте му свое собствено <em>namespace</em>,  тъй като ще се нуждае от вътрешен масив с имената на месеците и използвайте обикновен JavaScript, без каквато и да е система от зареждащи модули.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_YcMMskAlqo" href="./10_modules.html#c_YcMMskAlqo"></a><span class="cm-comment">// Your code here.</span>
 
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">month</span>.<span class="cm-property">name</span>(<span class="cm-number">2</span>));
@@ -615,19 +270,10 @@ loader system.</p>
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">month</span>.<span class="cm-property">number</span>(<span class="cm-string">"November"</span>));
 <span class="cm-comment">// → 10</span></pre>
 <div class="solution"><div class="solution-text">
-<p><a class="p_ident" id="p_N564mECTK6" href="./10_modules.html#p_N564mECTK6"></a>This follows the <code>weekDay</code> module almost
-exactly. A function expression, called immediately, wraps the variable
-that holds the array of names, along with the two functions that must
-be exported. The functions are put in an object and returned. The
-returned interface object is stored in the <code>month</code> variable.</p>
+<p><a class="p_ident" id="p_N564mECTK6" href="./10_modules.html#p_N564mECTK6"></a>Това е почти точно следване на модула <code>weekDay</code>. Функцията израз извикана веднага, опакова променливата, която държи масива с имената, както и две функции, които трябва да се експортират. Функциите се поставят в един обект и се връщат. Върнатия обект на интерфейса се съхранява в променливата <code>month</code>.</p>
 </div></div>
-<h3><a class="h_ident" id="h_3j/KaVGNV2" href="./10_modules.html#h_3j/KaVGNV2"></a>A return to electronic life</h3>
-<p><a class="p_ident" id="p_+royQ52RxC" href="./10_modules.html#p_+royQ52RxC"></a>Hoping that
-<a href="./07_elife.html#elife">Chapter 7</a> is still somewhat fresh in your
-mind, think back to the system designed in that chapter and come up
-with a way to separate the code into modules. To refresh your memory,
-these are the functions and types defined in that chapter, in order of
-appearance:</p>
+<h3><a class="h_ident" id="h_3j/KaVGNV2" href="./10_modules.html#h_3j/KaVGNV2"></a>Връщане към електронния живот</h3>
+<p><a class="p_ident" id="p_+royQ52RxC" href="./10_modules.html#p_+royQ52RxC"></a>Надявам се, че споменът за <a href="./07_elife.html#elife">Chapter 7</a> е още пресен в съзнанието ви, да се върнем обратно в системата на проектната глава и да излезем с начин да се раздели кода в модули. За да освежим паметта си, това са функциите и типовете, определени в тази глава по реда на появяването им:</p>
 <pre>Vector
 Grid
 directions
@@ -646,18 +292,11 @@ Plant
 PlantEater
 SmartPlantEater
 Tiger</pre>
-<p><a class="p_ident" id="p_qH0Xj8v2nH" href="./10_modules.html#p_qH0Xj8v2nH"></a>Don’t exaggerate and create too many modules. A book
-that starts a new chapter for every page would probably get on your
-nerves, if only because of all the space wasted on titles. Similarly,
-having to open 10 files to read a tiny project isn’t helpful. Aim for
-three to five modules.</p>
-<p><a class="p_ident" id="p_fDzWqQqyw8" href="./10_modules.html#p_fDzWqQqyw8"></a>You can choose to have some functions become
-internal to their module and thus inaccessible to other modules.</p>
-<p><a class="p_ident" id="p_XYYo0/YDOl" href="./10_modules.html#p_XYYo0/YDOl"></a>There is no single correct solution here. Module organization is
-largely a matter of taste.</p>
+<p><a class="p_ident" id="p_qH0Xj8v2nH" href="./10_modules.html#p_qH0Xj8v2nH"></a>Непреувеличавайте и не създавайте твърде много модули. Една книга, която започва нова глава на всяка страница, вероятно ще ви се качи на нервите, дори и само заради пространството, което губи от новите заглавия. По същия начин, да отваряте 10 файла за четене на един малък проект не е от полза. Целта ви е от 3 до 5 модула.</p>
+<p><a class="p_ident" id="p_fDzWqQqyw8" href="./10_modules.html#p_fDzWqQqyw8"></a>Можете да определите, някои функции да станат вътрешни за техния модул и по този начин недостъпни за други модули.</p>
+<p><a class="p_ident" id="p_XYYo0/YDOl" href="./10_modules.html#p_XYYo0/YDOl"></a>Няма правилен отговор тука. Модулната организация до голяма степен е въпрос на вкус.</p>
 <div class="solution"><div class="solution-text">
-<p><a class="p_ident" id="p_E3iJwXoILn" href="./10_modules.html#p_E3iJwXoILn"></a>Here is what I came up with. I’ve put parentheses around internal
-functions.</p>
+<p><a class="p_ident" id="p_E3iJwXoILn" href="./10_modules.html#p_E3iJwXoILn"></a>Ето какво измислих. Сложил съм скоби около вътрешните функции.</p>
 <pre>Module "grid"
   Vector
   Grid
@@ -686,40 +325,16 @@ Module "ecosystem"
   PlantEater
   SmartPlantEater
   Tiger</pre>
-<p><a class="p_ident" id="p_VwnqNlhTuk" href="./10_modules.html#p_VwnqNlhTuk"></a>I have reexported the <code>directions</code> array from the
-<code>grid</code> module from <code>world</code> so that modules built on that (the
-ecosystems) don’t have to know or worry about the existence of the
-<code>grid</code> module.</p>
-<p><a class="p_ident" id="p_2pzeyE24tw" href="./10_modules.html#p_2pzeyE24tw"></a>I also duplicated two generic and tiny helper values
-(<code>randomElement</code> and <code>Wall</code>) since they are used as internal details
-in different contexts and do not belong in the interfaces for these
-modules.</p>
+<p><a class="p_ident" id="p_VwnqNlhTuk" href="./10_modules.html#p_VwnqNlhTuk"></a>Аз имам масив от реекспортирани <code>directions</code> от <code>grid</code> на модула на <code>world</code>, така че построените модули на (екосистемата) не трябва да знаят или притесняват за съществуването на 
+<code>grid</code> модул.</p>
+<p><a class="p_ident" id="p_2pzeyE24tw" href="./10_modules.html#p_2pzeyE24tw"></a>Също така, дублирам две общи и малки помощни стойности (<code>randomElement</code> and <code>Wall</code>), тъй като те се използват като вътрешна информация в различни контексти и не принадлежат на интерфейсите за тези модули.</p>
 </div></div>
-<h3><a class="h_ident" id="h_E/zWqBFdy8" href="./10_modules.html#h_E/zWqBFdy8"></a>Circular dependencies</h3>
-<p><a class="p_ident" id="p_/LVNV6+2SH" href="./10_modules.html#p_/LVNV6+2SH"></a>A
-tricky subject in dependency management is circular dependencies,
-where module A depends on B, and B also depends on A. Many module
-systems simply forbid this. CommonJS modules allow a limited form:
-it works as long as the modules do not replace their default <code>exports</code>
-object with another value and start accessing each other’s
-interface only after they finish loading.</p>
-<p><a class="p_ident" id="p_BFm3QczrDZ" href="./10_modules.html#p_BFm3QczrDZ"></a>Can you think of a way in which support for this feature could be
-implemented? Look back to the definition of <code>require</code> and consider
-what the function would have to do to allow this.</p>
+<h3><a class="h_ident" id="h_E/zWqBFdy8" href="./10_modules.html#h_E/zWqBFdy8"></a>Кръгови  зависимости</h3>
+<p><a class="p_ident" id="p_/LVNV6+2SH" href="./10_modules.html#p_/LVNV6+2SH"></a>Трудна тема в управлението на зависимостите са кръговите зависимости, където модул А зависи от В и В също зависи от А. Много модулни системи просто забравят това. CommonJS позволява ограничена форма: той работи толкова дълго с модулите, докато не постави в тях по подразбиране <code>exports</code> обект с друга стойност и стартира достъп до интерфейса между тях само след завършване на зареждането.</p>
+<p><a class="p_ident" id="p_BFm3QczrDZ" href="./10_modules.html#p_BFm3QczrDZ"></a>Сещате ли се за начин, който помага да се осъществи това? Погледнете на зад към определението на <code>require</code> и преценете какви функции ще трябва да направите, за да позволите това.</p>
 <div class="solution"><div class="solution-text">
-<p><a class="p_ident" id="p_By5oQNAE2m" href="./10_modules.html#p_By5oQNAE2m"></a>The trick
-is to add the <code>exports</code> object created for a module to <code>require</code>'s
-cache <em>before</em> actually running the module. This means the module
-will not yet have had a chance to override <code>module.exports</code>, so we do
-not know whether it may want to export some other value. After
-loading, the cache object is overridden with <code>module.exports</code>, which
-may be a different value.</p>
-<p><a class="p_ident" id="p_xRLcTfyWjS" href="./10_modules.html#p_xRLcTfyWjS"></a>But if in the course of loading the module, a second module is loaded
-that asks for the first module, its default <code>exports</code> object, which is likely
-still empty at this point, will be in the cache, and the second module
-will receive a reference to it. If it doesn’t try to do anything with
-the object until the first module has finished loading, things will
-work.</p>
+<p><a class="p_ident" id="p_By5oQNAE2m" href="./10_modules.html#p_By5oQNAE2m"></a>Номерът е да се добави <code>exports</code> обект, създаден за модула на <code>require</code> кеша, преди действителното пускане на модула. Това означава, че модула няма все още шанс да преодолее <code>module.exports</code>, така че ние не знаем дали той може да иска да изнася някаква друга стoйност. След <em>loading</em> (зареждане), кеша на обекта е изместен от <code>module.exports</code>, който може да бъде различна стойност.</p>
+<p><a class="p_ident" id="p_xRLcTfyWjS" href="./10_modules.html#p_xRLcTfyWjS"></a>Но ако в процеса на зареждане на модула, е зареден втори модул, той пита първия модул за неговия по подразбиране <code>exports</code> обект, който най-вероятно е празен в този момент и ще бъде в кеша и втория модул ще получи препратка към него. Ако той не се опита да направи нещо с този обект до завършване на зареждането на първия модул, нещата ще работят.</p>
 </div></div>
 <nav>
   <a href="./09_regexp.html" title="previous chapter">◀</a>
