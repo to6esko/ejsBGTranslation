@@ -28,7 +28,7 @@
 (Изрази  и  твърдения)
 </h2>
 <p><a class="p_ident" id="p_EuyWCUdM/0" href="./02_program_structure.html#p_EuyWCUdM/0"></a>В
-<a href="./01_values.html#values">глава 1</a> създадохме някои стойности и след това приложихме оператори върху тях, за да получим нови стойности. Създаване на стойности, като че ли е съществена част от всяка програма на JavaScript,  но това е само една част.</p>
+<a href="./01_values.html#values">Глава 1</a> създадохме някои стойности и след това приложихме оператори върху тях, за да получим нови стойности. Създаване на стойности, като че ли е съществена част от всяка програма на JavaScript,  но това е само една част.</p>
 <p><a class="p_ident" id="p_8CCep1TQ8b" href="./02_program_structure.html#p_8CCep1TQ8b"></a>Фрагмент от код, който произвежда стойност се нарича <em>expression</em> (израз). Всяка стойност, която е написана буквално като <code>22</code> или <code>"psychoanalysis"</code>) е израз. <em>Expression</em> в скоби е израз, който е бинарен оператор, когато се прилага към два израза или унарен оператор, когато се прилага към един израз.</p>
 <p><a class="p_ident" id="p_QXQG3kVSFh" href="./02_program_structure.html#p_QXQG3kVSFh"></a>Това показва част от красотата на интерфейса на базовия език. <em>Expression</em> могат да се влагат по начин, много подобен на начина, по който изразите в човешката реч са вложени, изразите могат да съдържат собствени под-изрази и т.н. Това ни позволява да комбинираме изрази, за да правим произволно сложни изчисления.</p>
 <p><a class="p_ident" id="p_K6OJ6JuFaH" href="./02_program_structure.html#p_K6OJ6JuFaH"></a>Ако израз съответства на фрагмент от изречение, то твърдението <em>statement</em> на  JavaScript съответства напълно на изречение в човешката реч. Програмата е просто списък с твърдения.</p>
@@ -94,7 +94,7 @@ throw true try typeof var void while with yield</pre>
 <span class="cm-comment">// → the value of x is 30</span></pre>
 <p><a class="p_ident" id="p_lKC7MRhfz2" href="./02_program_structure.html#p_lKC7MRhfz2"></a>Въпреки, че имената на променливите не могат да съдържат точки очевидно има една. Това е така защото <code>console.log</code> не е обикновена променлива. Всъщност това е израз, който извлича <code>log</code> от стойността на 
 <code>console</code>променливата. Ще разберете какво точно означава това в 
-<a href="./04_data.html#properties">глава 4</a>.</p>
+<a href="./04_data.html#properties">Глава 4</a>.</p>
 <h2 id="return_values"><a class="h_ident" id="h_nULi9znEdr" href="./02_program_structure.html#h_nULi9znEdr"></a>Стойности  за  връщане</h2>
 <p><a class="p_ident" id="p_cJD1JUU5+H" href="./02_program_structure.html#p_cJD1JUU5+H"></a>Показване на диалогов прозорец или писане на текст на екрана е страничен ефект. Много функции са полезни именно поради страничните ефекти, които произвеждат. Функциите могат също да произведат стойности и в този случай не трябва да имат страничен ефект за да бъдат полезни. Например <code>Math.max</code> взема произволен брой цифрови стойности и връща по-голямата.</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_KDqbDlOaSI" href="./02_program_structure.html#c_KDqbDlOaSI"></a><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">Math</span>.<span class="cm-property">max</span>(<span class="cm-number">2</span>, <span class="cm-number">4</span>));
@@ -195,7 +195,7 @@ throw true try typeof var void while with yield</pre>
 <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">result</span>);
 <span class="cm-comment">// → 1024</span></pre>
 <p><a class="p_ident" id="p_MERlXZu4+T" href="./02_program_structure.html#p_MERlXZu4+T"></a><em>Counter</em> (брояч) може да започне от <code>1</code> и да проверява до <code>&lt;= 10</code>, но по причини, които ще станат ясни в 
-<a href="./04_data.html#array_indexing">глава 4</a>, това е добра идея да свикнете с броенето от нула.</p>
+<a href="./04_data.html#array_indexing">Глава 4</a>, това е добра идея да свикнете с броенето от нула.</p>
 <p><a class="p_ident" id="p_vrOESKfZl/" href="./02_program_structure.html#p_vrOESKfZl/"></a>Цикъла <code>do</code> е контролна структура, подобен на <code>while</code> цикъла. Той се различава само по една точка: един <code>do</code> цикъл винаги изпълнява блока в тялото си поне веднъж и започва да проверява дали трябва да спре едва след първото завъртане. За да направи това, условността се поставя след тялото на цикъла:</p>
 <pre data-language="javascript" class="snippet cm-s-default"><a class="c_ident" id="c_WhNPkjCnm1" href="./02_program_structure.html#c_WhNPkjCnm1"></a><span class="cm-keyword">do</span> {
   <span class="cm-keyword">var</span> <span class="cm-variable">yourName</span> <span class="cm-operator">=</span> <span class="cm-variable">prompt</span>(<span class="cm-string">"Who are you?"</span>);
@@ -275,7 +275,7 @@ FuzzyLittleTurtle
 fuzzyLittleTurtle</pre>
 <p><a class="p_ident" id="p_iHeX2bOrpK" href="./02_program_structure.html#p_iHeX2bOrpK"></a>Първият стил е труден за четене. Лично аз, като гледам долните, ми се струва, че този стил е безполезно да се пише. Стандартните функции на JavaScript, както и повечето програмисти, следват долните стилове, като се възползват от всяка дума. Не е трудно да се свикне с малките неща, като това. Код със смесени стилове на именуване може да бъде шокиращ за четене, така че просто следвайте тази конвенция.</p>
 <p><a class="p_ident" id="p_zMlRK/pymj" href="./02_program_structure.html#p_zMlRK/pymj"></a>В няколко случая, като например функцията <code>Number</code>, първата буква също е капитализирана. Това е направено за да се отбележи тази функция, като конструктор. Какво е конструктор ще стане ясно в 
-<a href="./06_object.html#constructors">глава 6</a>. За сега не трябва да се притесняваме от тази очевидна липса на съгласуваност.</p>
+<a href="./06_object.html#constructors">Глава 6</a>. За сега не трябва да се притесняваме от тази очевидна липса на съгласуваност.</p>
 <h2><a class="h_ident" id="h_/OBuIOX390" href="./02_program_structure.html#h_/OBuIOX390"></a>Коментари</h2>
 <p><a class="p_ident" id="p_0/Ms9AYRwI" href="./02_program_structure.html#p_0/Ms9AYRwI"></a>Често суровия код не предоставя цялата информация, която искаме програмата да предаде на евентуален друг читател или я предава по такъв загадъчен начин, че хората не могат да я разберат. В други случаи, може би ако се почувствате настроени поетично или искате да включите някои мисли, като част от вашата програма. Може да използвате коментарите за това.</p>
 <p><a class="p_ident" id="p_c5N0ebF2ts" href="./02_program_structure.html#p_c5N0ebF2ts"></a>Коментара е текст, който е част от програмата, но не се изпълнява от компютъра. В JavaScript има два начина за писане на коментари. За да напишете коментар на един ред, може да използвате две наклонени черти (<code>//</code>) и след тях текста на коментара:</p>
