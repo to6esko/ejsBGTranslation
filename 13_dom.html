@@ -436,17 +436,10 @@ bold</code> опаковано в <code>&lt;style&gt;</code> таг, който 
 <p><a class="p_ident" id="p_snKMJh0e7N" href="./13_dom.html#p_snKMJh0e7N"></a>Можете да извикате <code>byTagname</code> от вътре рекурсивно конкатенирайки получените масиви за производство на продукцията. За по-ефективен подход, дефинирайте една вътрешна функция, която извиква себе си рекурсивно и има достъп до масива на променливите дефинирани във външната функция, в която тя може да добави съвпадащите елементи, които намери. Не забравяйте да извикате вътрешната функция веднъж от външната функция.</p>
 <p><a class="p_ident" id="p_Zi3ayOqWyD" href="./13_dom.html#p_Zi3ayOqWyD"></a>Рекурсивната функция трябва да провери вида на разклонението. Тука ние се интересуваме само от <code>node type - 1 (document.ELEMENT_NODE)</code>. За такива разклонения ни трябва цикъл, с който да преминем над децата и за всяко дете да видим дали то съответства на заявката, като същевременно прави рекурсивно извикване върху него, за да инспектира своите собствени деца.</p>
 </div></div>
-<h3><a class="h_ident" id="h_ye4Ws9YmoI" href="./13_dom.html#h_ye4Ws9YmoI"></a>The cat’s hat</h3>
-<p><a class="p_ident" id="p_6r1baDVOSE" href="./13_dom.html#p_6r1baDVOSE"></a>Extend the cat animation defined
-<a href="./13_dom.html#animation">earlier</a> so that both the cat and his hat
-(<code>&lt;img src="img/hat.png"&gt;</code>) orbit at opposite sides of the ellipse.</p>
-<p><a class="p_ident" id="p_2gTA+NB5av" href="./13_dom.html#p_2gTA+NB5av"></a>Or make the hat circle around the cat. Or alter the animation in some
-other interesting way.</p>
-<p><a class="p_ident" id="p_kC6i5Avza+" href="./13_dom.html#p_kC6i5Avza+"></a>To make positioning multiple objects easier, it is probably a
-good idea to switch to absolute positioning. This means that <code>top</code> and
-<code>left</code> are counted relative to the top left of the document. To avoid
-using negative coordinates, you can simply add a fixed number of
-pixels to the position values.</p>
+<h3><a class="h_ident" id="h_ye4Ws9YmoI" href="./13_dom.html#h_ye4Ws9YmoI"></a>Шапката на котката</h3>
+<p><a class="p_ident" id="p_6r1baDVOSE" href="./13_dom.html#p_6r1baDVOSE"></a>Разширете анимацията на котката дефинирана <a href="./13_dom.html#animation">по-рано</a>, така че котката и шапката (<code>&lt;img src="img/hat.png"&gt;</code>) да обикалят в орбита от противоположните страни на елипсата.</p>
+<p><a class="p_ident" id="p_2gTA+NB5av" href="./13_dom.html#p_2gTA+NB5av"></a>Или направи шапка върху главата на котката. Или промени анимацията по някакъв друг интересен начин.</p>
+<p><a class="p_ident" id="p_kC6i5Avza+" href="./13_dom.html#p_kC6i5Avza+"></a>За да бъдат по-лесно позиционирани множество обекти, е може би добра идея да се премине към абсолютно позициониране. Това означава, че <code>top</code> и <code>left</code> частта са <em>relative</em> спрямо горния ляв ъгъл на документа. За да избегнете използването на отрицателни координати, можете просто да добавите фиксиран брой пиксели към стойностите на позициите.</p>
 <pre data-language="text/html" class="snippet cm-s-default"><a class="c_ident" id="c_2LqaWLIGPR" href="./13_dom.html#c_2LqaWLIGPR"></a><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"img/cat.png"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"cat"</span> <span class="cm-attribute">style</span>=<span class="cm-string">"position: absolute"</span><span class="cm-tag cm-bracket">&gt;</span>
 <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"img/hat.png"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"hat"</span> <span class="cm-attribute">style</span>=<span class="cm-string">"position: absolute"</span><span class="cm-tag cm-bracket">&gt;</span>
 
